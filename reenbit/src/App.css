@@ -1,0 +1,101 @@
+/* div {
+  border: 0.5px solid #f4a460;
+} */
+
+.dialogs__header {
+  border-bottom: 1px solid gray;
+  padding: 10px 20px;
+}
+
+.active-user {
+  font-size: 24px;
+  font-weight: bold;
+  color: gray;
+}
+
+.active-user img {
+  height: 50px;
+  width: auto;
+}
+
+.dialogs__input-section {
+  /* background: azure;
+  min-height: 140px; */
+}
+
+.dialogs__input-section input {
+  /* display: block;
+  content: '';
+  width: 80%;
+  padding: 15px;
+  border-radius: 15px;
+  margin: auto; */
+}
+
+.userChats {
+  padding: 5px 0;
+  /* background: lightgray; */
+  border-bottom: 0.5px solid lightgray;
+  list-style-type: none;
+  margin-left: -35px;
+  position: relative;
+  min-height: 40px;
+}
+
+.userChats h4 {
+  text-transform: capitalize;
+  margin: 0;
+}
+.userChats p {
+  font-size: 12px;
+  margin: 5px;
+}
+
+.lastDialogData {
+  position: absolute;
+  right: 5px;
+  color: rgba(0, 0, 0, 0.549);
+  top: 3px;
+}
+
+.lastDialogMessage {
+  color: rgba(0, 0, 0, 0.44);
+}
+
+.chats {
+  grid-area: 'chats';
+}
+
+.dialogs {
+  grid-area: 'dialog';
+  background-color: antiquewhite;
+  min-height: 90vh;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 20% 70% 10%;
+}
+
+.favourites {
+  grid-area: 'favourite';
+}
+
+.chats,
+.dialogs,
+.favourites {
+  border: 0.5px solid #352110;
+}
+
+.main-container {
+  overflow: hidden;
+  max-width: 80vw;
+  max-height: 90vh;
+  padding: 25px 50px;
+  margin: auto;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 15% 85%;
+  grid-template-areas:
+    'favourite dialog'
+    'chats dialog';
+}
