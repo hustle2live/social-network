@@ -1,4 +1,6 @@
-// import React, { useState, useContext } from 'react';
+import React, { useState, createContext } from 'react';
+
+export const ChatContext = createContext();
 
 const Data = {
   users: ['ann', 'mike', 'diana', 'jessica', 'malcolm', 'eva'],
@@ -79,34 +81,60 @@ const Data = {
     ]
   },
   activeUser: false
-  // changeUser: (elemName) => elemName
 };
 
-const AddNewUser = () => {};
+// const addNewMessage = (userName, currentDate, message) => {
+//   const currentUserChat = Data.chats[userName];
+//   if (currentUserChat.some(({ dialogDate }) => dialogDate === currentDate)) {
+//     currentUserChat.forEach(({ dialogDate, messages }) => {
+//       if (dialogDate === currentDate) {
+//         messages.push({ me: message });
+//       }
+//     });
+//   } else {
+//     currentUserChat.push({
+//       dialogDate: currentDate,
+//       messages: [{ me: message }]
+//     });
+//   }
+//   return Data;
+// };
 
-export const ChangeActiveUser = (userName) => {
-  Data.activeUser = userName;
+const MyContext = (props) => {
+  const [chatData, setChatData] = useState(Data);
+  const [currentUser, setCurrentUser] = useState([chatData.activeUser]);
+  const changeUser = (name) => setCurrentUser((chatData.activeUser = name));
+
+  const addNewChatMessage = (currentDate, message) => {
+    const userName = [...currentUser].join('');
+    const newData = Object.assign({}, chatData);
+    const currentUserChat = newData.chats[userName];
+    console.log(currentUserChat);
+    if (currentUserChat.some(({ dialogDate }) => dialogDate === currentDate)) {
+      currentUserChat.forEach(({ dialogDate, messages }) => {
+        if (dialogDate === currentDate) {
+          messages.push({ me: message });
+        }
+      });
+    } else {
+      currentUserChat.push({
+        dialogDate: currentDate,
+        messages: [{ me: message }]
+      });
+    }
+    return setChatData(newData);
+  };
+
+  // const addNewChatMessage = (date, msg) =>
+  // setChatData(addNewMessage(currentUser, date, msg));
+
+  const dataValue = { chatData, changeUser, addNewChatMessage };
+
+  return (
+    <ChatContext.Provider value={dataValue}>
+      {props.children}
+    </ChatContext.Provider>
+  );
 };
 
-export const AddNewMessage = (userName, currentDate, message) => {
-  if (
-    Data.chats[userName].some(({ dialogDate }) => dialogDate === currentDate)
-  ) {
-    Data.chats[userName].forEach(({ dialogDate, messages }) => {
-      if (dialogDate === currentDate) {
-        messages.push({ me: message });
-        console.log(currentDate + ' is includes');
-      }
-    });
-  } else {
-    Data.chats[userName].push({
-      dialogDate: currentDate,
-      messages: [{ me: message }]
-    });
-  }
-  return Data;
-};
-
-export default Data;
-
-ChangeActiveUser(Data.users[2]);
+export default MyContext;

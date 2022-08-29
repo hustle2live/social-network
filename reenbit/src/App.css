@@ -1,6 +1,9 @@
 /* div {
   border: 0.5px solid #f4a460;
 } */
+.capitalize {
+  text-transform: capitalize;
+}
 
 .dialogs__header {
   border-bottom: 1px solid gray;
@@ -19,27 +22,106 @@
 }
 
 .dialogs__input-section {
-  /* background: azure;
-  min-height: 140px; */
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  /* background: azure; */
+}
+
+.dialogs__input-section::before {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 0.5px;
+  width: 100%;
+  margin-bottom: 5px;
+  background: gray;
+}
+
+.dialogs__input-section input,
+.dialogs__input-section button {
+  height: fit-content;
+  align-self: center;
+  border: 1px solid gray;
 }
 
 .dialogs__input-section input {
-  /* display: block;
-  content: '';
-  width: 80%;
-  padding: 15px;
+  width: 65%;
+  padding: 5px 10px;
   border-radius: 15px;
-  margin: auto; */
+}
+.dialogs__input-section button {
+  font-size: 10px;
+  padding: 10px 5px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.dialogs__input-section input:active,
+.dialogs__input-section input:focus,
+.dialogs__input-section button:active {
+  box-shadow: 0 0 8px 0 rgba(76, 76, 76, 0.446);
+}
+.dialogs__input-section input:focus {
+  outline: none;
+}
+
+.dialogs__dialogs {
+  overflow-y: scroll;
+  padding-bottom: 50px;
+}
+
+.userChatListDiv::-webkit-scrollbar,
+.dialogs__dialogs::-webkit-scrollbar {
+  display: none;
+}
+
+.message-date {
+  text-align: center;
+  color: orange;
+  opacity: 0.65;
+  font-size: 14px;
+}
+
+.align_right {
+  color: green;
+  text-align: right;
+}
+.align_left {
+  color: red;
+  text-align: left;
+}
+.userChatListDiv {
+  /* display: block; */
+  height: 100%;
+  /* content: ''; */
+  overflow-y: scroll;
+  position: relative;
+}
+
+.userChatList {
+  display: grid;
+  height: fit-content;
+  width: -webkit-fill-available;
+  background: lightblue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 80px;
 }
 
 .userChats {
-  padding: 5px 0;
-  /* background: lightgray; */
+  display: block;
+  margin: 2px 0;
+  padding: 8px 8px;
+  background: lightgray;
   border-bottom: 0.5px solid lightgray;
   list-style-type: none;
-  margin-left: -35px;
+  margin-left: -40px;
   position: relative;
   min-height: 40px;
+  cursor: pointer;
 }
 
 .userChats h4 {
@@ -53,7 +135,7 @@
 
 .lastDialogData {
   position: absolute;
-  right: 5px;
+  right: 10px;
   color: rgba(0, 0, 0, 0.549);
   top: 3px;
 }
@@ -64,6 +146,11 @@
 
 .chats {
   grid-area: 'chats';
+  display: block;
+  overflow: hidden;
+}
+.chats h2 {
+  margin-bottom: 0;
 }
 
 .dialogs {
@@ -77,6 +164,13 @@
 
 .favourites {
   grid-area: 'favourite';
+  padding: 5px;
+  font-size: 12px;
+}
+
+.favourites h3,
+p {
+  margin: 5px;
 }
 
 .chats,
@@ -87,9 +181,12 @@
 
 .main-container {
   overflow: hidden;
-  max-width: 80vw;
+  /* max-width: 80vw; */
+  max-width: 90vw;
+
   max-height: 90vh;
-  padding: 25px 50px;
+  /* padding: 25px 50px; */
+  padding: 25px 0;
   margin: auto;
   margin-top: 10px;
   display: grid;
