@@ -11,13 +11,13 @@
 }
 
 .active-user {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 500;
   color: gray;
 }
 
 .active-user img {
-  height: 50px;
+  height: 45px;
   width: auto;
 }
 
@@ -85,22 +85,65 @@
 }
 
 .align_right {
-  color: green;
   text-align: right;
+  margin: auto;
+  margin-right: 0;
 }
 .align_left {
-  color: red;
   text-align: left;
+  margin: auto;
+  margin-left: 0;
 }
+
+.message .align_right,
+.message .align_left {
+  width: fit-content;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  word-wrap: normal;
+  white-space: '-';
+}
+
+.message {
+  display: block;
+  position: relative;
+  padding: 0 5px;
+}
+
+.message .align_right {
+  background-color: #c1c1c1;
+  color: #000;
+}
+.message .align_left {
+  background-color: #434451;
+  color: #fff;
+}
+
+.message .align_right span,
+.message .align_left span {
+  font-size: 10px;
+  color: #646464;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  padding: 5px;
+}
+
+.message .align_right span {
+  right: 0;
+}
+
 .userChatListDiv {
-  /* display: block; */
   height: 100%;
-  /* content: ''; */
   overflow-y: scroll;
   position: relative;
 }
 
 .userChatList {
+  margin-top: 0;
+
   display: grid;
   height: fit-content;
   width: -webkit-fill-available;
@@ -150,7 +193,9 @@
   overflow: hidden;
 }
 .chats h2 {
-  margin-bottom: 0;
+  margin: 10px 5px;
+  color: rgb(46, 94, 139);
+  font-weight: 400;
 }
 
 .dialogs {

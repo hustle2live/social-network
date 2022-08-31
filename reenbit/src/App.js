@@ -12,7 +12,8 @@ const App = (props) => {
   return (
     <ChatContext.Consumer>
       {(data) => {
-        if (!data.chatData.activeUser) data.changeUser(data.chatData.users[0]);
+        if (!data.chatData.activeUser)
+          data.changeUser(Object.keys(data.chatData.chats)[0]);
         return (
           <div className='main-container'>
             <Favourites />
