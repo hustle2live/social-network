@@ -1,12 +1,10 @@
 import React, { useState, createContext } from 'react';
-import Data from './Data';
+import { mockData } from './mockData';
 
 export const ChatContext = createContext();
 
-// console.log();
-
 const MyContext = (props) => {
-  const [chatData, setChatData] = useState(Data);
+  const [chatData, setChatData] = useState(mockData);
   const [currentUser, setCurrentUser] = useState(chatData.activeUser);
   const changeUser = (name) => setCurrentUser((chatData.activeUser = name));
 
@@ -16,7 +14,7 @@ const MyContext = (props) => {
     const currentUserChat = newData.chats[userName];
 
     if (currentUserChat.some(({ dialogDate }) => dialogDate === currentDate)) {
-      currentUserChat.forEach(({ dialogDate, messages, dialogId }) => {
+      currentUserChat.forEach(({ dialogDate, messages }) => {
         if (dialogDate === currentDate) {
           messages.push({
             author: 'me',

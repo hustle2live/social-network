@@ -1,8 +1,5 @@
-const Data = {
-  users: ['ann', 'mike', 'diana', 'jessica', 'malcolm', 'eva'],
-
-  activeUser: false,
-
+export const mockData = {
+  selectedUserChat: null,
   chats: {
     ann: [
       {
@@ -30,7 +27,6 @@ const Data = {
         ]
       }
     ],
-
     diana: [
       {
         dialogDate: '22.12.2020',
@@ -87,7 +83,6 @@ const Data = {
         ]
       }
     ],
-
     mike: [
       {
         dialogDate: '02.06.2022',
@@ -162,7 +157,6 @@ const Data = {
         ]
       }
     ],
-
     jessica: [
       {
         dialogDate: '16.08.2019',
@@ -250,5 +244,3 @@ const Data = {
     ]
   }
 };
-
-export default Data;

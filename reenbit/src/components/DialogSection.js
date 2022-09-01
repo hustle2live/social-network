@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChatContext } from './Context';
+import { ChatContext } from '../context/MyContext';
 
-import userLogo from '../images/user-icon.png';
+import userLogo from '../static/images/user-icon.png';
 
 const generateUniqueKeyId = (name = '') => {
   return (performance.now().toString(36) + Math.random().toString(36)).replace(
@@ -19,7 +19,7 @@ const getCurrentTime = () => {
     date.slice(14, -4)}`;
 };
 
-export const DialogSection = (props) => (
+export const DialogSection = () => (
   <ChatContext.Consumer>
     {(data) => {
       const inputRef = React.createRef();

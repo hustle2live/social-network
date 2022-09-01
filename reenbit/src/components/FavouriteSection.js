@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChatContext } from './Context';
+import { ChatContext } from '../context/MyContext';
 
-export const Favourites = (props) => (
+export const Favourites = () => (
   <ChatContext.Consumer>
     {(data) => {
       return (

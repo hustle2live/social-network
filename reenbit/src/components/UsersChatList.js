@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChatContext } from './Context';
+import { ChatContext } from '../context/MyContext';
 
-export const UsersChatList = (props) => (
+export const UsersChatList = () => (
   <ChatContext.Consumer>
     {(data) => (
       <div className='chats'>
