@@ -1,47 +1,35 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import { mockData } from './mockData';
 
-export const ChatContext = createContext();
+export const ChatContext = createContext(mockData);
 
 const MyContext = (props) => {
   const [chatData, setChatData] = useState(mockData);
-  const [currentUser, setCurrentUser] = useState(chatData.activeUser);
-  const changeUser = (name) => setCurrentUser((chatData.activeUser = name));
+  const [currentUser, setCurrentUser] = useState(chatData[0].user);
 
-  const addNewChatMessage = (currentDate, message, sendTime, uid) => {
-    const userName = currentUser;
-    const newData = Object.assign({}, chatData);
-    const currentUserChat = newData.chats[userName];
+  const addNewChatMessage = (message, sendTime, uid, messageAuthor = 'me') => {
+    chatData.map(({ user, messages }) => {
+      if (user === currentUser) {
+        const newUserMessage = {
+          author: messageAuthor,
+          text: message,
+          time: sendTime,
+          id: uid
+        };
 
-    if (currentUserChat.some(({ dialogDate }) => dialogDate === currentDate)) {
-      currentUserChat.forEach(({ dialogDate, messages }) => {
-        if (dialogDate === currentDate) {
-          messages.push({
-            author: 'me',
-            text: message,
-            time: sendTime,
-            id: uid
-          });
-        }
-      });
-    } else {
-      currentUserChat.push({
-        dialogDate: currentDate,
-        dialogId: currentDate + uid + userName,
-        messages: [
-          {
-            author: 'me',
-            text: message,
-            time: sendTime,
-            id: uid
-          }
-        ]
-      });
-    }
-    return setChatData(newData);
+        messages.push(newUserMessage);
+      }
+    });
+
+    setChatData(chatData);
   };
 
-  const dataValue = { chatData, changeUser, addNewChatMessage };
+  const dataValue = {
+    chatData,
+    currentUser,
+    setCurrentUser,
+    addNewChatMessage
+  };
 
   return (
     <ChatContext.Provider value={dataValue}>
