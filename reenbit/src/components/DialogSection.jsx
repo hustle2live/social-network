@@ -58,16 +58,12 @@ export const DialogSection = () => {
 
   const sendMessage = () => {
     const newMessage = message.trim();
-
     if (!newMessage) return;
-
     data.addNewChatMessage(newMessage, messageTime(), messageId());
-
     setMessage('');
-
     setTimeout(getAnswerMessage, 10000);
   };
-
+  console.log(data);
   // const currentDate = new Date().toString().substring(4, 15);
 
   return (

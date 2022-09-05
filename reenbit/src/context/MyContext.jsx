@@ -4,10 +4,11 @@ import { mockData } from './mockData';
 export const ChatContext = createContext(mockData);
 
 const MyContext = (props) => {
-  const [chatData, setChatData] = useState(mockData);
+  const chatData = mockData;
   const [currentUser, setCurrentUser] = useState(chatData[0].user);
+  const [newChatMessage, doWeHaveNewChatMessage] = useState('');
 
-  const addNewChatMessage = (message, sendTime, uid, messageAuthor = 'me') => {
+  const addNewChatMessage = (message, sendTime, uid, messageAuthor = 'me') =>
     chatData.map(({ user, messages }) => {
       if (user === currentUser) {
         const newUserMessage = {
@@ -16,13 +17,11 @@ const MyContext = (props) => {
           time: sendTime,
           id: uid
         };
-
         messages.push(newUserMessage);
+
+        doWeHaveNewChatMessage(message);
       }
     });
-
-    setChatData(chatData);
-  };
 
   const dataValue = {
     chatData,
