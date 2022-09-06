@@ -1,32 +1,36 @@
 import React, { useContext } from 'react';
 import { ChatContext } from '../context/MyContext';
+import { lastMessageInArray, dateTimeChatListFormatt } from './helpers';
 
 export const UsersChatList = () => {
   const data = useContext(ChatContext);
+
+  const UserList = () =>
+    data.chatData.map(({ user, messages }) => (
+      <li
+        key={user}
+        className='userChats'
+        onClick={() => {
+          data.setCurrentUser(user);
+        }}
+      >
+        <h4>{user}</h4>
+        <p className='lastDialogData'>
+          {dateTimeChatListFormatt(lastMessageInArray(messages).time)}
+        </p>
+        <p className='lastDialogMessage'>
+          {lastMessageInArray(messages).author}:{' '}
+          {lastMessageInArray(messages).text.slice(0, 20)}...
+        </p>
+      </li>
+    ));
+
   return (
     <div className='chats'>
       <h2>Chats</h2>
       <div className='userChatListDiv'>
         <ul className='userChatList'>
-          {data.chatData.map(({ user, messages }) => {
-            const userChatLastMessage = messages[messages.length - 1];
-            return (
-              <li
-                key={user}
-                className='userChats'
-                onClick={() => {
-                  data.setCurrentUser(user);
-                }}
-              >
-                <h4>{user}</h4>
-                <p className='lastDialogData'>{userChatLastMessage.time}</p>
-                <p className='lastDialogMessage'>
-                  {userChatLastMessage.author}:{' '}
-                  {userChatLastMessage.text.slice(0, 20)}...
-                </p>
-              </li>
-            );
-          })}
+          <UserList />
         </ul>
       </div>
     </div>

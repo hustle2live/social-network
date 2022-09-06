@@ -158,13 +158,14 @@
   display: block;
   margin: 2px 0;
   padding: 8px 8px;
-  background: lightgray;
+  background: rgb(233, 232, 232);
   border-bottom: 0.5px solid lightgray;
   list-style-type: none;
   margin-left: -40px;
   position: relative;
   min-height: 40px;
   cursor: pointer;
+  border: 4px solid transparent;
 }
 
 .userChats h4 {

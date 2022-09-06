@@ -4,8 +4,6 @@ import { DialogSection } from './components/DialogSection.jsx';
 import { Favourites } from './components/FavouriteSection.jsx';
 import { UsersChatList } from './components/UsersChatList.jsx';
 
-// import { ChatContext } from './context/MyContext';
-
 import './App.css';
 
 const App = () => (
