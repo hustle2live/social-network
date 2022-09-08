@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { ChatContext } from '../context/MyContext';
 import { getApiAnswerMessage } from './getApiAnswerMessage';
 import {
-  generateUniqueKeyId,
+  generateUniqueId,
   getCurrentTime,
   dateTimeMessageFormatt,
   dateTimeChatListFormatt
@@ -21,7 +21,7 @@ export const DialogSection = () => {
   const sendMessage = () => {
     const newMessage = message.trim();
     if (!newMessage) return;
-    data.addNewChatMessage(newMessage, getCurrentTime(), generateUniqueKeyId());
+    data.addNewChatMessage(newMessage, getCurrentTime(), generateUniqueId());
     setTimeout(
       () => getApiAnswerMessage(data.currentUser, data.addNewChatMessage),
       10000

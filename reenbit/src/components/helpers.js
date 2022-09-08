@@ -1,4 +1,4 @@
-export const generateUniqueKeyId = (name = '') =>
+export const generateUniqueId = (name = '') =>
   (performance.now().toString(36) + Math.random().toString(36)).replace(
     /\./g,
     name

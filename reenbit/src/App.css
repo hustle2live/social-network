@@ -169,7 +169,7 @@
 }
 
 .userChats h4 {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin: 0;
 }
 .userChats p {
@@ -241,4 +241,25 @@ p {
   grid-template-areas:
     'favourite dialog'
     'chats dialog';
+}
+
+.hide {
+  display: none;
+}
+
+.search-section {
+  display: flex;
+}
+
+#live_search {
+  display: block;
+  min-width: 300px;
+  margin-left: 15px;
+  border: 0.5px solid lightgray;
+}
+
+label[for='live_search'] {
+  margin-left: 15px;
+  padding: 6px 0 0 0;
+  color: lightgray;
 }

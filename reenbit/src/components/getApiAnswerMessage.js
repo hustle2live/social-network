@@ -1,4 +1,4 @@
-import { generateUniqueKeyId, getCurrentTime } from './helpers.js';
+import { generateUniqueId, getCurrentTime } from './helpers.js';
 
 export const getApiAnswerMessage = (activeUser, addNewChatMessage) => {
   fetch('https://api.chucknorris.io/jokes/random')
@@ -15,7 +15,7 @@ export const getApiAnswerMessage = (activeUser, addNewChatMessage) => {
         addNewChatMessage(
           userResponseMessage,
           getCurrentTime(),
-          generateUniqueKeyId(),
+          generateUniqueId(),
           activeUser
         );
     })
