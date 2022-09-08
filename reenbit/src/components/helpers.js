@@ -13,3 +13,10 @@ export const dateTimeMessageFormatt = (date) =>
 
 export const dateTimeChatListFormatt = (date) =>
   `${date.slice(4, 10)},${date.slice(11, 15)}`;
+
+export const insertMarkText = (str, pos, len) =>
+  str.slice(0, pos) +
+  '<mark>' +
+  str.slice(pos, pos + len) +
+  '</mark>' +
+  str.slice(pos + len);

@@ -5,6 +5,8 @@ import { lastMessageInArray, dateTimeChatListFormatt } from './helpers';
 export const UsersChatList = () => {
   const data = useContext(ChatContext);
 
+  const upperFirstLetter = (str) => str[0].toUpperCase() + str.slice(1);
+
   const UserList = () =>
     data.chatData.map(({ user, messages }) => (
       <li
@@ -14,7 +16,7 @@ export const UsersChatList = () => {
           data.setCurrentUser(user);
         }}
       >
-        <h4>{user}</h4>
+        <h4>{upperFirstLetter(user)}</h4>
         <p className='lastDialogData'>
           {dateTimeChatListFormatt(lastMessageInArray(messages).time)}
         </p>

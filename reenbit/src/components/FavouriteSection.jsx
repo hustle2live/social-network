@@ -1,52 +1,46 @@
 import React, { useContext, useState } from 'react';
+import { insertMarkText } from './helpers';
 import { ChatContext } from '../context/MyContext';
 
 export const Favourites = () => {
   const data = useContext(ChatContext);
   const [searchMessage, setSearchMessage] = useState('');
 
-  const insertMark = (str, pos, len) =>
-    str.slice(0, pos) +
-    '<mark>' +
-    str.slice(pos, pos + len) +
-    '</mark>' +
-    str.slice(pos + len);
-
-  const startSearchInChatNames = (message) => {
+  const searchInChatNames = (message) => {
     const chatsElements = document.querySelectorAll('.userChats');
 
     chatsElements.forEach((item) => {
       const elem = item.childNodes[0];
-      const showElem = (item, elem) => {
+
+      const showElem = () => {
         item.classList.remove('hide');
         elem.innerHTML = elem.innerText;
       };
-      const hideElem = (item, elem) => {
+
+      const hideElem = () => {
         item.classList.add('hide');
         elem.innerHTML = elem.innerText;
       };
 
       if (message.trim() !== '') {
-        if (elem.innerText.search(message) === -1) {
-          hideElem(item, elem);
-        } else {
-          showElem(item, elem);
-          elem.innerHTML = insertMark(
+        if (elem.innerText.toLowerCase().search(message.toLowerCase()) === -1)
+          hideElem();
+        else {
+          showElem();
+          elem.innerHTML = insertMarkText(
             elem.innerText,
-            elem.innerText.search(message),
+            elem.innerText.toLowerCase().search(message.toLowerCase()),
             message.length
           );
         }
-      } else {
-        showElem(item, elem);
-      }
+      } else showElem();
     });
   };
 
   const onSearchChangeHandler = (e) => {
     const val = e.target.value;
     setSearchMessage(val);
-    startSearchInChatNames(val);
+    searchInChatNames(val);
   };
 
   return (
