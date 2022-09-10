@@ -173,6 +173,10 @@
   margin: 0;
 }
 
+.firstOrderInlist {
+  order: -1;
+}
+
 .userChats p {
   font-size: 12px;
   margin: 5px;

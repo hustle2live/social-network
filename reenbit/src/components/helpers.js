@@ -20,3 +20,6 @@ export const insertMarkText = (str, pos, len) =>
   str.slice(pos, pos + len) +
   '</mark>' +
   str.slice(pos + len);
+
+export const upperCaseFirstLetter = (str) =>
+  str[0].toUpperCase() + str.slice(1);

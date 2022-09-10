@@ -1,12 +1,39 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext } from 'react';
 import { mockData } from './mockData';
+import { lastMessageInArray } from '../components/helpers';
 
 export const ChatContext = createContext(mockData);
 
 const MyContext = (props) => {
-  const chatData = mockData;
+  const chatData =
+    JSON.parse(window.localStorage.getItem('mockData')) || mockData;
+
+  const writeToLocalStorage = (dataFile) =>
+    window.localStorage.setItem('mockData', JSON.stringify(dataFile));
+
+  chatData.sort(
+    (a, b) =>
+      Date.parse(lastMessageInArray(b.messages).time) -
+      Date.parse(lastMessageInArray(a.messages).time)
+  );
+
+  // chatData.sort(
+  //   (a, b) =>
+  //     Date.parse(lastMessageInArray(b.messages).time) -
+  //     Date.parse(lastMessageInArray(a.messages).time)
+  // );
+
+  // console.log(
+  //   Date.parse(
+  //     'Wed Mar 02 2022 18:42:12 GMT+0200 (Восточная Европа, стандартное время)'
+  //   )
+  // );
+
+  writeToLocalStorage(chatData);
+  // console.log(chatData);
+
   const [currentUser, setCurrentUser] = useState(chatData[0].user);
-  const [newChatMessage, doWeHaveNewChatMessage] = useState('');
+  const [newChatMessage, setNewMessageState] = useState('');
 
   const addNewChatMessage = (message, sendTime, uid, messageAuthor = 'me') =>
     chatData.map(({ user, messages }) => {
@@ -18,8 +45,8 @@ const MyContext = (props) => {
           id: uid
         };
         messages.push(newUserMessage);
-
-        doWeHaveNewChatMessage(message);
+        setNewMessageState(message);
+        writeToLocalStorage(chatData);
       }
     });
 
@@ -27,7 +54,8 @@ const MyContext = (props) => {
     chatData,
     currentUser,
     setCurrentUser,
-    addNewChatMessage
+    addNewChatMessage,
+    setNewMessageState
   };
 
   return (
