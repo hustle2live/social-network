@@ -19,10 +19,10 @@ export const UsersChatList = () => {
               key={user}
               className='userChats'
               onClick={(e) => {
-                e.currentTarget.parentNode.childNodes.forEach(
-                  (li) => (li.style.order = 0)
+                e.currentTarget.parentNode.childNodes.forEach((li) =>
+                  li.classList.remove('primary-color')
                 );
-                e.currentTarget.style.order = -1;
+                e.currentTarget.classList.add('primary-color');
                 data.setCurrentUser(user);
               }}
             >
@@ -30,7 +30,7 @@ export const UsersChatList = () => {
               <p className='lastDialogData'>
                 {dateTimeChatListFormatt(lastMessageInArray(messages).time)}
               </p>
-              <p className='lastDialogMessage'>
+              <p className='lastDialogMessage capitalize'>
                 {lastMessageInArray(messages).author}:{' '}
                 {lastMessageInArray(messages).text.slice(0, 20)}...
               </p>

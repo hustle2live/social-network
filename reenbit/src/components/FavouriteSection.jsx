@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { insertMarkText } from './helpers';
 import { ChatContext } from '../context/MyContext';
 
+import userIcon from '../static/images/user-icon.png';
+
 export const Favourites = () => {
   const data = useContext(ChatContext);
   const [searchMessage, setSearchMessage] = useState('');
@@ -38,16 +40,18 @@ export const Favourites = () => {
   };
 
   const onSearchChangeHandler = (e) => {
-    const val = e.target.value;
+    const val = e.target.value || '';
     setSearchMessage(val);
     searchInChatNames(val);
   };
 
   return (
     <div className='favourites'>
-      <div>
-        <h3>Pin user</h3>
-        <p className='capitalize'>{data.currentUser}</p>
+      <div className='pin-section'>
+        <div>
+          <img src={userIcon} alt='favourites users and chats' />
+          <p className='capitalize'>{data.currentUser}</p>
+        </div>
       </div>
       <div className='search-section'>
         <label htmlFor='live_search'>search</label>
@@ -57,6 +61,12 @@ export const Favourites = () => {
           type='text'
           id='live_search'
         />
+        <button
+          className={searchMessage ? 'clear-btn' : 'clear-btn hidden'}
+          onClick={onSearchChangeHandler}
+        >
+          <span className='material-symbols-rounded'>cancel</span>
+        </button>
       </div>
     </div>
   );

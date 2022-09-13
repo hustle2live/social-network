@@ -50,6 +50,9 @@ export const DialogSection = () => {
   return (
     <div className='dialogs'>
       <section className='dialogs__header'>
+        <button className='back-btn' onClick={() => data.setCurrentUser('')}>
+          <span class='material-symbols-rounded'>arrow_back</span>
+        </button>
         <div className='active-user'>
           <img src={userLogo} alt='active user icon' />
           <span className='capitalize'>{data.currentUser}</span>
