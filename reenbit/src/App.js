@@ -10,19 +10,6 @@ import './App.css';
 const App = () => {
   const data = useContext(ChatContext);
 
-  const mobileScreenGrid = () => {
-    console.log(window.innerWidth);
-    if (window.innerWidth > 450) return;
-    const mainContainer = document.querySelector('.main-container');
-    const backButton = document.querySelector('.back-btn');
-
-    console.log(data.currentUser);
-
-    if (data.currentUser) console.log(mainContainer);
-
-    // .style.gridTemplateColumns = '1% 90%';
-  };
-
   return (
     <div
       className={
