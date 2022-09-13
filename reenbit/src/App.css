@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 .capitalize {
@@ -220,7 +219,7 @@ ul li {
   min-height: 90vh;
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 18% 70% 10%;
+  grid-template-rows: 18% 70% 12%;
 }
 
 .favourites {
