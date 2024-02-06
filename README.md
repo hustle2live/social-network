@@ -1,6 +1,6 @@
 # Social-Network 
 Hi, 
-In [this mini-app ](https://hustle2live.github.io/social-network/) you've got a chance to get the best jokes :laughing: from [CHUCK Norris Jokes API](https://api.chucknorris.io/) 
+In [this mini-app ](https://hustle2live.github.io/social-network/)  you've got a chance to get the best jokes :laughing: from [CHUCK Norris Jokes API](https://api.chucknorris.io/) 
 
  After a sending message take __await for 10 seconds__ to get an answer with some fun joke from Chuck's
 
